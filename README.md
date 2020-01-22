@@ -1,8 +1,8 @@
 <b>pDriver: A novel method for unravelling personalised coding and miNRA cancer drivers</b>
 
 Vu VH Pham (1), Lin Liu (1), Cameron P Bracken (2,3), Gregory J Goodall (2,3), Thin Nguyen (4), Jiuyong Li (1), and Thuc D Le (1)</br>
-(1) School of Information Technology and Mathematical Sciences, University of South Australia, Mawson Lakes, 5095, Australia</br>
-(2) Centre for Cancer Biology, SA Pathology, Adelaide, 5000, Australia</br>
+(1) School of Information Technology and Mathematical Sciences, University of South Australia, Mawson Lakes, SA 5095, Australia</br>
+(2) Centre for Cancer Biology, an alliance of SA Pathology and University of South Australia, Adelaide, SA 5000, Australia</br>
 (3) Department of Medicine, The University of Adelaide, Adelaide, SA 5005, Australia</br>
 (4) Applied Artificial Intelligence Institute, Deakin University, Australia
 
