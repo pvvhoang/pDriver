@@ -20,4 +20,4 @@ The data are in the Data folder and include:</br>
 
 Notes:</br>
     &nbsp;&nbsp;&nbsp;&nbsp;(1) You might need to unzip hsa.zip file (TransmiR dataset for TF-miRNA interactions) before using it.</br>
-    &nbsp;&nbsp;&nbsp;&nbsp;(2) As the file BRCA_matchedData_full.RData (Tumour expression data) is larger than 100 MB, we are not allowed to upload it here, you might need to download it from https://github.com/pvvhoang/CancerDriver/releases/tag/v2.0
+    &nbsp;&nbsp;&nbsp;&nbsp;(2) As the data files are large, we do not upload them here, you might need to download them from https://github.com/pvvhoang/pDriver/releases/tag/v1.0
