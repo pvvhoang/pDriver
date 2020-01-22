@@ -16,7 +16,7 @@ The scripts are in the Script folder and include:</br>
     
 The data are in the Data folder and include:</br>
     &nbsp;&nbsp;&nbsp;&nbsp;(1) Input files</br>
-    &nbsp;&nbsp;&nbsp;&nbsp;(2) Output files in Output folder
+    &nbsp;&nbsp;&nbsp;&nbsp;(2) Output files for BRCA (in Output folder), LUAD (in LUAD folder), LUSC (in LUSC folder), KIRC (in KIRC folder), and HNSC (in HNSC folder)
 
 Notes:</br>
     &nbsp;&nbsp;&nbsp;&nbsp;(1) You might need to unzip hsa.zip file (TransmiR dataset for TF-miRNA interactions) before using it.</br>
