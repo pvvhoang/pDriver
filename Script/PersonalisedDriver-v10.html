@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -147,6 +146,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -251,8 +251,8 @@ rootDir &lt;- &quot;C:/Users/phavy022/MyDoc/19Personalised/Experiment&quot; # An
 outDir &lt;- &quot;C:/Users/phavy022/MyDoc/19Personalised/Experiment/Data/Output&quot; # Output folder
 controlDir &lt;- &quot;C:/MinGW/bin&quot; # Put here the library from control network
 numCores &lt;- 4 # Number of cores to be used
-nomiR &lt;- 100
-nomR &lt;- 100
+nomiR &lt;- 100 # Can be set by users, this is the number of selected miRNAs for further analysis
+nomR &lt;- 100 # Can be set by users, this is the number of selected coding genes for further analysis besides TFs
 nomRforSC &lt;- 400
 #---------------------------------------
 

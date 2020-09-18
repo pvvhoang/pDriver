@@ -88,8 +88,8 @@ rootDir <- "C:/Users/phavy022/MyDoc/19Personalised/Experiment" # And put the inp
 outDir <- "C:/Users/phavy022/MyDoc/19Personalised/Experiment/Data/Output" # Output folder
 controlDir <- "C:/MinGW/bin" # Put here the library from control network
 numCores <- 4 # Number of cores to be used
-nomiR <- 100
-nomR <- 100
+nomiR <- 100 # Can be set by users, this is the number of selected miRNAs for further analysis
+nomR <- 100 # Can be set by users, this is the number of selected coding genes for further analysis besides TFs
 nomRforSC <- 400
 #---------------------------------------
 
