@@ -595,7 +595,8 @@ method &lt;- 1 # PNC, sheet 1
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -607,7 +608,8 @@ method &lt;- 2 # DriverML, sheet 2
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -619,7 +621,8 @@ method &lt;- 3 # ActiveDriver, sheet 3
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -631,7 +634,8 @@ method &lt;- 4 # DriverNet, sheet 4
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -643,7 +647,8 @@ method &lt;- 5 # MutSigCV, sheet 5
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -655,7 +660,8 @@ method &lt;- 6 # OncoDriveFM, sheet 6
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -667,7 +673,8 @@ method &lt;- 7 # DEG-Folchange, sheet 7
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -679,7 +686,8 @@ method &lt;- 8 # DEG-p-value, sheet 8
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -691,7 +699,8 @@ method &lt;- 9 # DEG-FDR, sheet 9
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -703,7 +712,8 @@ method &lt;- 10 # Hub-genes, sheet 10
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -715,7 +725,8 @@ method &lt;- 12 # DawnRank, sheet 12
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -727,7 +738,8 @@ method &lt;- 13 # SSN, sheet 13
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -994,7 +1006,8 @@ method &lt;- 1 # PNC, sheet 1
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1006,7 +1019,8 @@ method &lt;- 2 # DriverML, sheet 2
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1018,7 +1032,8 @@ method &lt;- 3 # ActiveDriver, sheet 3
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1030,7 +1045,8 @@ method &lt;- 4 # DriverNet, sheet 4
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1042,7 +1058,8 @@ method &lt;- 5 # MutSigCV, sheet 5
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1054,7 +1071,8 @@ method &lt;- 6 # OncoDriveFM, sheet 6
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1066,7 +1084,8 @@ method &lt;- 7 # DEG-Folchange, sheet 7
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1078,7 +1097,8 @@ method &lt;- 8 # DEG-p-value, sheet 8
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1090,7 +1110,8 @@ method &lt;- 9 # DEG-FDR, sheet 9
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1102,7 +1123,8 @@ method &lt;- 10 # Hub-genes, sheet 10
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1114,7 +1136,8 @@ method &lt;- 11 # SCS, sheet 11
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1126,7 +1149,8 @@ method &lt;- 12 # DawnRank, sheet 12
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1138,7 +1162,8 @@ method &lt;- 13 # SSN, sheet 13
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1405,7 +1430,8 @@ method &lt;- 1 # PNC, sheet 1
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1417,7 +1443,8 @@ method &lt;- 2 # DriverML, sheet 2
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1429,7 +1456,8 @@ method &lt;- 3 # ActiveDriver, sheet 3
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1441,7 +1469,8 @@ method &lt;- 4 # DriverNet, sheet 4
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1453,7 +1482,8 @@ method &lt;- 5 # MutSigCV, sheet 5
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1465,7 +1495,8 @@ method &lt;- 6 # OncoDriveFM, sheet 6
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1477,7 +1508,8 @@ method &lt;- 7 # DEG-Folchange, sheet 7
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1489,7 +1521,8 @@ method &lt;- 8 # DEG-p-value, sheet 8
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1513,7 +1546,8 @@ method &lt;- 10 # Hub-genes, sheet 10
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1525,7 +1559,8 @@ method &lt;- 11 # SCS, sheet 11
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1537,7 +1572,8 @@ method &lt;- 12 # DawnRank, sheet 12
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1816,7 +1852,8 @@ method &lt;- 1 # PNC, sheet 1
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1828,7 +1865,8 @@ method &lt;- 2 # DriverML, sheet 2
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1840,7 +1878,8 @@ method &lt;- 3 # ActiveDriver, sheet 3
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1852,7 +1891,8 @@ method &lt;- 4 # DriverNet, sheet 4
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1864,7 +1904,8 @@ method &lt;- 5 # MutSigCV, sheet 5
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1876,7 +1917,8 @@ method &lt;- 6 # OncoDriveFM, sheet 6
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1888,7 +1930,8 @@ method &lt;- 7 # DEG-Folchange, sheet 7
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1900,7 +1943,8 @@ method &lt;- 8 # DEG-p-value, sheet 8
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1924,7 +1968,8 @@ method &lt;- 10 # Hub-genes, sheet 10
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1936,7 +1981,8 @@ method &lt;- 11 # SCS, sheet 11
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -1948,7 +1994,8 @@ method &lt;- 12 # DawnRank, sheet 12
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2227,7 +2274,8 @@ method &lt;- 1 # PNC, sheet 1
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2239,7 +2287,8 @@ method &lt;- 2 # DriverML, sheet 2
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2251,7 +2300,8 @@ method &lt;- 3 # ActiveDriver, sheet 3
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2263,7 +2313,8 @@ method &lt;- 4 # DriverNet, sheet 4
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2275,7 +2326,8 @@ method &lt;- 5 # MutSigCV, sheet 5
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2287,7 +2339,8 @@ method &lt;- 6 # OncoDriveFM, sheet 6
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2299,7 +2352,8 @@ method &lt;- 7 # DEG-Folchange, sheet 7
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2311,7 +2365,8 @@ method &lt;- 8 # DEG-p-value, sheet 8
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2335,7 +2390,8 @@ method &lt;- 10 # Hub-genes, sheet 10
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2347,7 +2403,8 @@ method &lt;- 11 # SCS, sheet 11
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
@@ -2359,7 +2416,8 @@ method &lt;- 12 # DawnRank, sheet 12
 # Evaluate
 driver &lt;- read_excel(paste(rootDir, &quot;/Data/journal.pcbi.1007520.s004.xlsx&quot;,
                           sep = &quot;&quot;), sheet = method)
-driver &lt;- driver[,cancer_type]
+# driver &lt;- driver[,cancer_type]
+driver &lt;- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated &lt;- intersect(driver[[1]], gold_standard)
 t &lt;- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind &lt;- ind + 1
