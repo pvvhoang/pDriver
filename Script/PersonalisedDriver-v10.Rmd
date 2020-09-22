@@ -476,7 +476,7 @@ driver <- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated <- intersect(driver[[1]], gold_standard)
 t <- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind <- ind + 1
-r[ind,] <- c(t$Precision, t$Recall, t$F1Score)
+r[ind,] <- c(NA, NA, NA) # Because the number of estimated drivers is too small, we remove this out of the comparison
 
 # MutSigCV
 # Set method
@@ -890,7 +890,7 @@ driver <- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated <- intersect(driver[[1]], gold_standard)
 t <- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind <- ind + 1
-r[ind,] <- c(t$Precision, t$Recall, t$F1Score)
+r[ind,] <- c(NA, NA, NA) # Because the number of estimated drivers is too small, we remove this out of the comparison
 
 # MutSigCV
 # Set method
@@ -2167,7 +2167,7 @@ driver <- driver[!is.na(driver[,cancer_type]),cancer_type]
 driver_validated <- intersect(driver[[1]], gold_standard)
 t <- computeMeasures(length(driver_validated), length(driver[[1]]) - length(driver_validated), noOfCGC)
 ind <- ind + 1
-r[ind,] <- c(t$Precision, t$Recall, t$F1Score)
+r[ind,] <- c(NA, NA, NA) # Because the number of estimated drivers is too small, we remove this out of the comparison
 
 # MutSigCV
 # Set method
