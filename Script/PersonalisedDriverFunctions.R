@@ -1956,6 +1956,111 @@ constructNetwork <- function(data, method, rootDir) {
 }
 
 #================================================================
+#' This function allows you to construct networks for patients, using the new lioness function (i.e. return SummarizedExperiment).
+#' @param data Gene expression: rows - genes, cols - samples
+#' @param method Method to build networks
+#' @param rootDir Root folder
+#' @return Networks
+#================================================================
+constructNetwork2 <- function(data, method, rootDir) {
+  
+  cancer_network <- NULL
+  
+  if (method == "LIONESS") {
+    # model the single-sample networks based on co-expression using lionessR
+    cormat <- lioness(data, netFun)
+    cormat <- assays(cormat)$lioness
+    cormat <- cbind(reg = "", tar = "", cormat)
+    n <- nrow(cormat)
+    for (i in 1:n) {
+      cormat[i,1] <- strsplit(row.names(cormat)[i],split='_', fixed=TRUE)[[1]][1]
+      cormat[i,2] <- strsplit(row.names(cormat)[i],split='_', fixed=TRUE)[[1]][2]
+    }
+    cancer_network <- refineNetwork(cormat, rootDir)
+    cancer_network <- as.data.table(cancer_network)
+  }
+  
+  return(cancer_network)
+}
+
+#================================================================
+#' This function allows you to construct networks for patients.
+#' @param data Gene expression: rows - genes, cols - samples
+#' @param method Method to build networks
+#' @param rootDir Root folder
+#' @return Networks
+#================================================================
+constructNetwork8 <- function(data, method, rootDir) {
+  
+  cancer_network <- NULL
+  
+  if (method == "LIONESS") {
+    # model the single-sample networks based on co-expression using lionessR
+    cormat <- lioness8(data, netFun8)
+    row.names(cormat) <- paste(cormat[,1], cormat[,2], sep="_")
+    cancer_network <- refineNetwork(cormat, rootDir)
+    cancer_network <- as.data.table(cancer_network)
+  }
+  
+  return(cancer_network)
+}
+
+#' LIONESS
+#'
+#' This function uses the LIONESS equation to estimate single-sample networks.
+#' @param x Numeric matrix with samples in columns.
+#' @param f Network reconstruction function. Defaults to Pearson correlation.
+#' @keywords lioness
+#' @export
+#' @examples
+#' exp <- matrix(sample(1000,1000)/1000, 100, 10)
+#' colnames(exp) <- paste("sample", c(1:ncol(exp)), sep="_")
+#' row.names(exp) <- paste("gene", c(1:nrow(exp)), sep="_")
+#' lionessResults <- lioness(exp, netFun)
+
+lioness8 <- function(x, f=netFun, ...){
+  
+  if(!is.function(f)){ stop("please use a function") }
+  if(!is.matrix(x)) { print("please use a numeric matrix as input") }
+  
+  nrsamples <- ncol(x)
+  samples <- colnames(x)
+  
+  # this applies netFun and extracts the aggregate network
+  net <- f(x)
+  agg <- c(net)
+  
+  # prepare the lioness output
+  lionessOutput <- matrix(NA, nrow(net)*ncol(net), nrsamples+2)
+  colnames(lionessOutput) <- c("reg", "tar", samples)
+  lionessOutput[,1] <- rep(row.names(net), ncol(net))
+  lionessOutput[,2] <- rep(colnames(net), each=nrow(net))
+  lionessOutput <- as.data.frame(lionessOutput, stringsAsFactors=F)
+  lionessOutput[,3:ncol(lionessOutput)] <- sapply(lionessOutput[,3:ncol(lionessOutput)], as.numeric)
+  
+  # run function f and the LIONESS equation
+  for(i in 1:nrsamples){
+    ss <- c(f(x[,-i])) # apply netFun on all samples minus one
+    lionessOutput[,i+2] <- nrsamples*(agg-ss)+ss # apply LIONESS equation
+  }
+  return(lionessOutput)  
+}
+
+#' netFun
+#'
+#' This is the network reconstruction function that will be used to build aggregate networks.
+#' @param x Numeric matrix with samples in columns.
+#' @keywords netFun
+#' @export
+#' @examples
+#' netFun()
+
+
+netFun8 <- function(x, ...) {
+  stats::cor(t(x), method="pearson") 
+}
+
+#================================================================
 #' Refine networks based on the existing datasets
 #' @param data List of edges, rows - edges, cols - start, end, samples
 #' @param rootDir Root folder
@@ -2015,15 +2120,79 @@ refineNetwork = function(data, rootDir){
   return(r)
 }
 
+#' #================================================================
+#' #' Refine networks based on the existing datasets
+#' #' @param data List of edges, rows - edges, cols - samples
+#' #' @param rootDir Root folder
+#' #' @return Edges of the network from cause to effect
+#' #================================================================
+#' refineNetwork2 = function(data, rootDir){
+#'   
+#'   # nodes
+#'   reg_tar <- row.names(data)
+#'   nodes <- strsplit(reg_tar, split = "_")
+#'   nodes <- unlist(nodes)
+#'   nodes <- unique(nodes)
+#'   
+#'   # Filter with existing datasets
+#'   # TF => mRNA, mRNA => mRNA, TF => TF: Filter with PPI interactions
+#'   # Get PPI network
+#'   edges <- read_excel(paste(rootDir, "/Data/PPI.xls",
+#'                             sep = ""), sheet = 1)
+#'   interactions <- edges[, c(1, 3)]
+#'   colnames(interactions) <- c("cause", "effect")
+#'   interactions <- interactions[which(interactions$cause %in% nodes),]
+#'   interactions <- interactions[which(interactions$effect %in% nodes),]
+#'   # miRNA => TF & miRNA => mRNA: Filter with
+#'   # miRTarBase_v6.1+TarBase_v7.0+miRWalk_v2.0.csv & TargetScan_7.0.csv
+#'   confirmedList <- read.csv(paste(rootDir, "/Data/miRTarBase_v6.1+TarBase_v7.0+miRWalk_v2.0.csv",
+#'                                   sep = ""), header = FALSE)
+#'   colnames(confirmedList) <- c("cause", "effect")
+#'   predictedList <- read.csv(paste(rootDir, "/Data/TargetScan_7.0.csv", sep = ""), header = TRUE)
+#'   predictedList <- predictedList[, -2]
+#'   colnames(predictedList) <- c("cause", "effect")
+#'   confirmedList[, 1] <- miRNAVersionConvert(confirmedList[, 1], targetVersion = "v21", exact = TRUE, verbose = FALSE)[,2]
+#'   predictedList[, 1] <- miRNAVersionConvert(predictedList[, 1], targetVersion = "v21", exact = TRUE, verbose = FALSE)[,2]
+#'   targetbinding <- rbind(confirmedList, predictedList)
+#'   targetbinding <- unique(targetbinding)
+#'   targetbinding$effect <- as.character(targetbinding$effect)
+#'   # TF => miRNA: Filter with TransmiR from http://www.cuilab.cn/transmir 
+#'   interacts <- read.table(file = paste(rootDir, "/Data/hsa.tsv", sep = ""),
+#'                           sep = '\t', header = FALSE)
+#'   interacts <- interacts[, 1:2]
+#'   colnames(interacts) <- c("cause", "effect")
+#'   interacts[, 2] <- miRNAVersionConvert(interacts[, 2], targetVersion = "v21", exact = TRUE, verbose = FALSE)[,2]
+#'   interacts <- unique(interacts)
+#'   interacts$cause <- as.character(interacts$cause)
+#'   interacts <- interacts[which(!(is.na(interacts$effect))),]
+#'   interacts$effect <- gsub("hsa-mir", "hsa-miR", interacts$effect)
+#'   
+#'   # Combine
+#'   interactions <- rbind(interactions, targetbinding)
+#'   interactions <- rbind(interactions, interacts)
+#'   interactions <- unique(interactions)
+#'   interactions <- interactions[which(!(is.na(interactions$cause))),]
+#'   interactions <- interactions[which(!(is.na(interactions$effect))),]
+#'   interactions <- as.data.frame(interactions)
+#'   row.names(interactions) <- paste(interactions[,1], interactions[,2], sep="_")
+#'   
+#'   # refine
+#'   r <- data[which(row.names(data) %in% row.names(interactions)),]
+#'   r <- as.matrix(r)
+#'   
+#'   return(r)
+#' }
+
 #================================================================
 #' Identify cancer drivers for individuals by network control
 #' @param network Network: rows - edges, cols - start, end, sample
 #' @param nodes Nodes of networks
 #' @param outDir Output directory
 #' @param controlDir Directory to run network control
+#' @param env Windows or Linux
 #' @return Predicted drivers
 #================================================================
-identifyIndDriversbyControl <- function(network, nodes, outDir, controlDir) {
+identifyIndDriversbyControl <- function(network, nodes, outDir, controlDir, env) {
   
   drivers <- nodes
   
@@ -2038,12 +2207,21 @@ identifyIndDriversbyControl <- function(network, nodes, outDir, controlDir) {
   write.table(interactions[,1:2], paste(mainDir, "/", subDir, "/edges.dat", sep = ""),
               row.names = FALSE, col.names=FALSE, quote=FALSE)
   # Run the controllability analysis
-  cmd <- paste(controlDir, "/parse.exe ", mainDir, "/", subDir, 
-               "/edges.dat", sep = "")
-  system(cmd)
-  cmd <- paste(controlDir, "/controllability_analysis.exe ", mainDir, "/", subDir,
-               "/edges.dat", sep = "")
-  system(cmd)
+  if (env == "windows") {
+    cmd <- paste(controlDir, "/parse.exe ", mainDir, "/", subDir, 
+                 "/edges.dat", sep = "")
+    system(cmd)
+    cmd <- paste(controlDir, "/controllability_analysis.exe ", mainDir, "/", subDir,
+                 "/edges.dat", sep = "")
+    system(cmd)
+  } else {
+    cmd <- paste(controlDir, "/Parse ", mainDir, "/", subDir, 
+                 "/edges.dat", sep = "")
+    system(cmd)
+    cmd <- paste(controlDir, "/ControllabilityAnalysis ", mainDir, "/", subDir,
+                 "/edges.dat", sep = "")
+    system(cmd)
+  }
   
   # Identify critical nodes in the network
   # Read the result
@@ -2205,9 +2383,10 @@ identifyIndDriversbyPageRank <- function(net, nodes) {
 #' @param method Method to be used
 #' @param outDir Output directory
 #' @param controlDir Directory to run network control
+#' @param env Windows or Linux
 #' @return Predicted drivers
 #================================================================
-identifyDrivers <- function(network, nodes, method="control", outDir, controlDir) {
+identifyDrivers <- function(network, nodes, method="control", outDir, controlDir, env = "Windows") {
   
   drivers <- nodes[,1]
   drivers <- as.matrix(drivers, ncol=1)
@@ -2215,7 +2394,7 @@ identifyDrivers <- function(network, nodes, method="control", outDir, controlDir
   
   if(method == "control") {
     for (i in 3:ncol(network)) {
-      temp <- identifyIndDriversbyControl(network[,c(1:2, i)], nodes, outDir, controlDir)
+      temp <- identifyIndDriversbyControl(network[,c(1:2, i)], nodes, outDir, controlDir, env)
       drivers <- cbind(drivers, temp[,2])
       colnames(drivers)[i-1] <- colnames(temp)[2]
     }
