@@ -10,9 +10,8 @@ This repository includes the scripts and data of the proposed method.
 
 The scripts are in the Script folder and include:</br>
     &nbsp;&nbsp;&nbsp;&nbsp;(1) PersonalisedDriverFunctions.R - Developed functions used for our method</br>
-    &nbsp;&nbsp;&nbsp;&nbsp;(2) Prognosis.R - Developed functions used for our method</br>
-    &nbsp;&nbsp;&nbsp;&nbsp;(3) PersonalisedDriver-v10.Rmd - Main script for the method</br>
-    &nbsp;&nbsp;&nbsp;&nbsp;(4) PersonalisedDriver-v10.html - Main script for the method in html
+    &nbsp;&nbsp;&nbsp;&nbsp;(2) PersonalisedDriver-v20.Rmd - Main script for the method</br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(3) PersonalisedDriver-v20.html - Main script for the method in html
     
 The data are in the Data folder and include:</br>
     &nbsp;&nbsp;&nbsp;&nbsp;(1) Input files</br>
