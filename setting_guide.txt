@@ -1,0 +1,51 @@
+To run the script of the method:
+
+1) Please install the required packages:
+
+library(readxl)
+library(miRLAB)
+library(miRBaseConverter)
+library(ggplot2)
+library(varhandle)
+library(scales)
+library(reshape)
+library(plyr)
+library(RColorBrewer)
+library(tidyverse)
+library(xtable)
+library(arrangements)
+library(biomaRt)
+library(foreach)
+library(doParallel)
+library(pcalg)
+library(ParallelPC)
+library(CancerSubtypes)
+library(survcomp)
+library(Biobase)
+library(mlr)
+library(randomForestSRC)
+library(Hmisc)
+library(survival)
+library(NMF)
+library(cluster)
+library(wesanderson)
+library(lionessR)
+library(data.table)
+library(igraph)
+
+2) Please put the below input files in the folder "rootDir/Data" (rootDir is an environment variable and will be set later):
+
+* PPI.xls - Protein protein interaction network
+* Browse Transcription Factors hg19 - resource_browser.csv - Transcription factors (TFs)
+* hsa.tsv - TransmiR dataset for TF-miRNA interactions
+* miRTarBase_v6.1+TarBase_v7.0+miRWalk_v2.0.csv - Datasets for miRNA-mRNA and miRNA-TF interactions
+* TargetScan_7.0.csv - Dataset for miRNA-mRNA and miRNA-TF interactions
+* BRCA_matchedData_full.RData - Tumour expression data
+
+3) Please set environment variables and create necessary folders
+rootDir <- "C:/Users/phavy022/MyDoc/19Personalised/Experiment" # And put the input files in "rootDir/Data"
+outDir <- "C:/Users/phavy022/MyDoc/19Personalised/Experiment/Data/Output" # Output folder
+controlDir <- "C:/MinGW/bin" # Put here the library from control network
+numCores <- 4 # Number of cores to be used
+nomiR <- 100 # This is the number of selected miRNAs for further analysis
+nomR <- 100 # This is the number of selected coding genes for further analysis besides TFs
