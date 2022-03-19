@@ -1,0 +1,29 @@
+#!/bin/bash
+
+### Job Name
+#SBATCH --job-name=HNSC2000mRNAs
+
+### Set email type for job
+### Accepted options: NONE, BEGIN, END, FAIL, ALL
+#SBATCH --mail-type=ALL
+
+### email address for user
+#SBATCH --mail-user=VuVietHoang.Pham@unisa.edu.au
+
+### Queue name that job is submitted to
+#SBATCH --partition=tango
+
+### Request resources
+#SBATCH --ntasks=8
+#SBATCH --mem=32gb
+#SBATCH --time=04:00:00
+
+echo Running on host `hostname`
+echo Time is `date`
+
+#Load module(s) if required
+module load r/3.6.2
+
+# Run the executable
+# MyProgram+Arguments
+R CMD BATCH /home/users/phamvv/pDriver/Script/HNSC2000mRNAs.R
